@@ -137,7 +137,7 @@ func (lan *Lan) ApplianceTransparentSend8370(data []byte, msgType byte) [][]byte
 
 	for _, response := range responses {
 		if len(response) > 40+16 {
-			response = len.Security.AesDecrypt(response[40 : len(response)-16])
+			response = lan.Security.AesDecrypt(response[40 : len(response)-16])
 		}
 		if len(response) > 10 {
 			packets = append(packets, response)
